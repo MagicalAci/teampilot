@@ -1,40 +1,174 @@
-name: AI Review on PR
+name: "TeamPilot AI Review"
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches: [main]
+    types: [opened, synchronize]
+    paths:
+      - 'projects/**/deliverables/**'
 
 permissions:
   contents: read
   pull-requests: write
-  issues: write
 
 jobs:
   ai-review:
+    name: "AI 审核"
     runs-on: ubuntu-latest
+    env:
+      TEAMPILOT_API_URL: ${{ secrets.TEAMPILOT_API_URL }}
+      TEAMPILOT_AI_REVIEW_KEY: ${{ secrets.TEAMPILOT_AI_REVIEW_KEY }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Notify TeamPilot Platform
-        if: env.TEAMPILOT_WEBHOOK_URL != ''
-        env:
-          TEAMPILOT_WEBHOOK_URL: ${{ secrets.TEAMPILOT_WEBHOOK_URL }}
-        run: |
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          PR_TITLE="${{ github.event.pull_request.title }}"
-          PR_BRANCH="${{ github.event.pull_request.head.ref }}"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-          curl -s -X POST "${TEAMPILOT_WEBHOOK_URL}" \
+      - name: Extract task context
+        id: context
+        run: |
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- 'projects/**/deliverables/**')
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          PROJECT_PATH=$(echo "$CHANGED_FILES" | head -1 | cut -d'/' -f1-2)
+          TASK_PATH=$(echo "$CHANGED_FILES" | head -1 | cut -d'/' -f1-4)
+          echo "project_path=$PROJECT_PATH" >> $GITHUB_OUTPUT
+          echo "task_path=$TASK_PATH" >> $GITHUB_OUTPUT
+
+      - name: Read brief and review criteria
+        id: materials
+        run: |
+          TASK_PATH="${{ steps.context.outputs.task_path }}"
+
+          BRIEF=""
+          if [ -f "$TASK_PATH/brief.md" ]; then
+            BRIEF=$(cat "$TASK_PATH/brief.md")
+          fi
+          echo "brief<<EOF" >> $GITHUB_OUTPUT
+          echo "$BRIEF" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          SKILL_IDS=""
+          KEY_DECISIONS=""
+          if [ -f "$TASK_PATH/key-decisions.md" ]; then
+            KEY_DECISIONS=$(cat "$TASK_PATH/key-decisions.md")
+          fi
+          echo "key_decisions<<EOF" >> $GITHUB_OUTPUT
+          echo "$KEY_DECISIONS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          REVIEW_CRITERIA=""
+          for skill_dir in skills/*/; do
+            if [ -f "${skill_dir}SKILL.md" ]; then
+              CRITERIA=$(awk '/^review_criteria:/,/^---/' "${skill_dir}SKILL.md" 2>/dev/null || true)
+              if [ -n "$CRITERIA" ]; then
+                SKILL_NAME=$(basename "$skill_dir")
+                REVIEW_CRITERIA="${REVIEW_CRITERIA}\n### ${SKILL_NAME}\n${CRITERIA}\n"
+              fi
+            fi
+          done
+          echo "review_criteria<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$REVIEW_CRITERIA" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Read deliverables content
+        id: deliverables
+        run: |
+          TASK_PATH="${{ steps.context.outputs.task_path }}"
+          CONTENT=""
+          for f in "$TASK_PATH/deliverables/"*; do
+            if [ -f "$f" ] && [[ "$f" == *.md ]]; then
+              CONTENT="${CONTENT}\n\n--- FILE: $(basename $f) ---\n"
+              CONTENT="${CONTENT}$(head -c 8000 "$f")"
+            fi
+          done
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$CONTENT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Run AI Review
+        id: review
+        run: |
+          PROMPT=$(cat <<'PROMPT_EOF'
+          你是 TeamPilot 的 AI 审核引擎。请基于以下材料对实习生提交的产出进行评审。
+
+          ## 负责人要求 (brief.md)
+          ${{ steps.materials.outputs.brief }}
+
+          ## 审核标准 (review_criteria)
+          ${{ steps.materials.outputs.review_criteria }}
+
+          ## 关键决策记录
+          ${{ steps.materials.outputs.key_decisions }}
+
+          ## 提交的交付物内容
+          ${{ steps.deliverables.outputs.content }}
+
+          ## 变更的文件
+          ${{ steps.context.outputs.changed_files }}
+
+          ---
+
+          请输出结构化审核报告，格式如下:
+
+          ### 总评
+          [1-2句总体评价]
+
+          ### 综合评分: [0-100] / 100
+
+          ### 按需求逐条审核
+          | # | 需求要点 | 状态 | 说明 |
+          |---|----------|------|------|
+          | 1 | ... | ✅/⚠️/❌ | ... |
+
+          ### 质量维度评估
+          | 维度 | 评分 | 说明 |
+          |------|------|------|
+          | 完整性 | /25 | ... |
+          | 专业性 | /25 | ... |
+          | 深度 | /25 | ... |
+          | 实用性 | /25 | ... |
+
+          ### 亮点
+          - ...
+
+          ### 改进建议
+          - ...
+
+          ### 结论
+          [建议通过 / 建议修改后重新提交 / 不建议通过]
+          PROMPT_EOF
+          )
+
+          RESPONSE=$(curl -s -X POST "$TEAMPILOT_API_URL/api/teampilot/ai-review" \
             -H "Content-Type: application/json" \
-            -d "{
-              \"event\": \"pull_request\",
-              \"action\": \"${{ github.event.action }}\",
-              \"pr_number\": ${PR_NUMBER},
-              \"pr_title\": \"${PR_TITLE}\",
-              \"branch\": \"${PR_BRANCH}\",
-              \"repository\": \"${{ github.repository }}\"
-            }" || echo "Webhook notification failed (non-fatal)"
+            -H "Authorization: Bearer $TEAMPILOT_AI_REVIEW_KEY" \
+            -d "{\"prompt\": $(echo "$PROMPT" | jq -Rs .)}" \
+            --max-time 120 2>/dev/null || echo '{"review":"AI 审核服务暂时不可用，请负责人手动审核。"}')
+
+          REVIEW_TEXT=$(echo "$RESPONSE" | jq -r '.review // .message // "AI 审核未返回有效结果"')
+
+          echo "review_text<<EOF" >> $GITHUB_OUTPUT
+          echo "$REVIEW_TEXT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Post review comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const reviewText = `${{ steps.review.outputs.review_text }}`;
+            const body = `## 🤖 TeamPilot AI 审核报告\n\n${reviewText}\n\n---\n_此报告由 AI 自动生成，供负责人参考。最终审核决定由负责人做出。_`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
