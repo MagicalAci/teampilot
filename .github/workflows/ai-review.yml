@@ -1,0 +1,40 @@
+name: AI Review on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Notify TeamPilot Platform
+        if: env.TEAMPILOT_WEBHOOK_URL != ''
+        env:
+          TEAMPILOT_WEBHOOK_URL: ${{ secrets.TEAMPILOT_WEBHOOK_URL }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          curl -s -X POST "${TEAMPILOT_WEBHOOK_URL}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"event\": \"pull_request\",
+              \"action\": \"${{ github.event.action }}\",
+              \"pr_number\": ${PR_NUMBER},
+              \"pr_title\": \"${PR_TITLE}\",
+              \"branch\": \"${PR_BRANCH}\",
+              \"repository\": \"${{ github.repository }}\"
+            }" || echo "Webhook notification failed (non-fatal)"
