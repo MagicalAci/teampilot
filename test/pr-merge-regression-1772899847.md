@@ -1,0 +1,1 @@
+# PR Auto-Merge Regression Test\n\nTimestamp: Sat Mar  7 16:10:48 UTC 2026\n\nThis file verifies TeamPilot auto-merge on approval.
