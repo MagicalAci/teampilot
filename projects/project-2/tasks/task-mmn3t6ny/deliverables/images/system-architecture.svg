@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 920" font-family="SF Pro Text, PingFang SC, Helvetica Neue, Arial, sans-serif">
+  <defs>
+    <linearGradient id="headerBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a22"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="920" fill="#f1f5f9"/>
+  <rect x="0" y="0" width="1600" height="78" fill="url(#headerBg)"/>
+  <text x="36" y="48" fill="#ffffff" font-size="28" font-weight="700">Unified Product Architecture</text>
+  <text x="465" y="48" fill="#94a3b8" font-size="16">Past-paper Learning + AI Paper Generation</text>
+
+  <text x="44" y="130" fill="#334155" font-size="16" font-weight="700">Users</text>
+  <text x="44" y="284" fill="#334155" font-size="16" font-weight="700">Experience Layer</text>
+  <text x="44" y="566" fill="#334155" font-size="16" font-weight="700">Core Engines</text>
+  <text x="44" y="794" fill="#334155" font-size="16" font-weight="700">Ops Layer</text>
+
+  <rect x="70" y="150" width="300" height="96" rx="20" fill="#eff6ff" stroke="#93c5fd" filter="url(#shadow)"/>
+  <circle cx="116" cy="198" r="18" fill="#3b82f6"/>
+  <text x="146" y="190" fill="#1e293b" font-size="22" font-weight="700">Undergrad Review</text>
+  <text x="146" y="214" fill="#475569" font-size="15">midterm / final / short-term calculus sprint</text>
+
+  <rect x="415" y="150" width="300" height="96" rx="20" fill="#f5f3ff" stroke="#c4b5fd" filter="url(#shadow)"/>
+  <circle cx="461" cy="198" r="18" fill="#8b5cf6"/>
+  <text x="491" y="190" fill="#1e293b" font-size="22" font-weight="700">Graduate Math Prep</text>
+  <text x="491" y="214" fill="#475569" font-size="15">exam math I / II / III targeted practice</text>
+
+  <rect x="760" y="150" width="360" height="96" rx="20" fill="#ecfeff" stroke="#67e8f9" filter="url(#shadow)"/>
+  <circle cx="806" cy="198" r="18" fill="#06b6d4"/>
+  <text x="836" y="190" fill="#1e293b" font-size="22" font-weight="700">Shared Learning Identity</text>
+  <text x="836" y="214" fill="#475569" font-size="15">account, mastery state, checklist, history</text>
+
+  <rect x="70" y="314" width="430" height="180" rx="22" fill="url(#cardBg)" stroke="#bfdbfe" filter="url(#shadow)"/>
+  <rect x="70" y="314" width="430" height="52" rx="22" fill="#3b82f6"/>
+  <text x="96" y="347" fill="#ffffff" font-size="22" font-weight="700">Past-paper Learning</text>
+  <text x="96" y="394" fill="#334155" font-size="16">Representative question cards</text>
+  <text x="96" y="424" fill="#64748b" font-size="14">- question source + knowledge tag</text>
+  <text x="96" y="448" fill="#64748b" font-size="14">- standard method + mistake notes</text>
+  <text x="96" y="472" fill="#64748b" font-size="14">- 1-3 micro variations after each card</text>
+
+  <rect x="540" y="314" width="430" height="180" rx="22" fill="url(#cardBg)" stroke="#c7d2fe" filter="url(#shadow)"/>
+  <rect x="540" y="314" width="430" height="52" rx="22" fill="#8b5cf6"/>
+  <text x="566" y="347" fill="#ffffff" font-size="22" font-weight="700">AI Paper Generator</text>
+  <text x="566" y="394" fill="#334155" font-size="16">Default mock + on-demand paper assembly</text>
+  <text x="566" y="424" fill="#64748b" font-size="14">- knowledge point / type / difficulty controls</text>
+  <text x="566" y="448" fill="#64748b" font-size="14">- true-paper-like distribution and templates</text>
+  <text x="566" y="472" fill="#64748b" font-size="14">- export, practice, answer and analysis</text>
+
+  <rect x="1010" y="314" width="430" height="180" rx="22" fill="url(#cardBg)" stroke="#a7f3d0" filter="url(#shadow)"/>
+  <rect x="1010" y="314" width="430" height="52" rx="22" fill="#22c55e"/>
+  <text x="1036" y="347" fill="#ffffff" font-size="22" font-weight="700">Review and Diagnosis</text>
+  <text x="1036" y="394" fill="#334155" font-size="16">Weak-point map and learning return path</text>
+  <text x="1036" y="424" fill="#64748b" font-size="14">- wrong questions + checklist completion</text>
+  <text x="1036" y="448" fill="#64748b" font-size="14">- mastery heatmap by chapter and type</text>
+  <text x="1036" y="472" fill="#64748b" font-size="14">- jump back to the right learning card</text>
+
+  <rect x="160" y="606" width="290" height="120" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#shadow)"/>
+  <text x="190" y="646" fill="#1e293b" font-size="20" font-weight="700">Structured Question Bank</text>
+  <text x="190" y="675" fill="#64748b" font-size="14">real questions, representative items,</text>
+  <text x="190" y="698" fill="#64748b" font-size="14">answer steps and traceable metadata</text>
+
+  <rect x="505" y="606" width="290" height="120" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#shadow)"/>
+  <text x="535" y="646" fill="#1e293b" font-size="20" font-weight="700">Knowledge and Type Graph</text>
+  <text x="535" y="675" fill="#64748b" font-size="14">chapter, concept, question type,</text>
+  <text x="535" y="698" fill="#64748b" font-size="14">method template, mistake taxonomy</text>
+
+  <rect x="850" y="606" width="290" height="120" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#shadow)"/>
+  <text x="880" y="646" fill="#1e293b" font-size="20" font-weight="700">Variant and Paper Rules</text>
+  <text x="880" y="675" fill="#64748b" font-size="14">AI generation, paper constraints,</text>
+  <text x="880" y="698" fill="#64748b" font-size="14">difficulty balance and answer checks</text>
+
+  <rect x="1195" y="606" width="290" height="120" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#shadow)"/>
+  <text x="1225" y="646" fill="#1e293b" font-size="20" font-weight="700">Recommendation and Tracking</text>
+  <text x="1225" y="675" fill="#64748b" font-size="14">mastery updates, next task,</text>
+  <text x="1225" y="698" fill="#64748b" font-size="14">review reminders and analytics</text>
+
+  <rect x="230" y="812" width="250" height="64" rx="18" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="260" y="851" fill="#c2410c" font-size="20" font-weight="700">Content Authoring</text>
+
+  <rect x="675" y="812" width="250" height="64" rx="18" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="742" y="851" fill="#b91c1c" font-size="20" font-weight="700">QA Review</text>
+
+  <rect x="1120" y="812" width="250" height="64" rx="18" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="1177" y="851" fill="#15803d" font-size="20" font-weight="700">Analytics</text>
+
+  <line x1="250" y1="246" x2="250" y2="314" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="565" y1="246" x2="755" y2="314" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="940" y1="246" x2="940" y2="314" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1120" y1="246" x2="1225" y2="314" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <line x1="285" y1="494" x2="305" y2="606" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="755" y1="494" x2="650" y2="606" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="755" y1="494" x2="995" y2="606" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1225" y1="494" x2="1340" y2="606" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1225" y1="494" x2="995" y2="606" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <line x1="355" y1="812" x2="305" y2="726" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="800" y1="812" x2="995" y2="726" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1245" y1="812" x2="1340" y2="726" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="42" y="872" width="1516" height="28" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="891" fill="#64748b" font-size="12">Key idea: two front-door experiences, one shared question / graph / recommendation foundation, and a mandatory return path from practice back to learning.</text>
+</svg>
