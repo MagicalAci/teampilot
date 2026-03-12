@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1400 860"
+     font-family="Avenir Next, PingFang SC, Microsoft YaHei, Helvetica Neue, sans-serif">
+  <defs>
+    <linearGradient id="headerBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0f172a22"/>
+    </filter>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="860" fill="#f1f5f9"/>
+  <circle cx="1270" cy="140" r="120" fill="#dbeafe" opacity="0.5"/>
+  <circle cx="130" cy="760" r="140" fill="#dcfce7" opacity="0.5"/>
+
+  <rect x="0" y="0" width="1400" height="78" fill="url(#headerBg)"/>
+  <text x="40" y="48" fill="#ffffff" font-size="28" font-weight="700">High Math Product Architecture</text>
+  <text x="520" y="48" fill="#94a3b8" font-size="16">One site, two entries, one shared backbone</text>
+
+  <text x="60" y="120" fill="#334155" font-size="18" font-weight="700">User-facing modules</text>
+
+  <g transform="translate(60,150)" filter="url(#shadow)">
+    <rect width="360" height="250" rx="24" fill="url(#cardBg)" stroke="#22c55e" stroke-width="2"/>
+    <rect width="360" height="54" rx="24" fill="#22c55e"/>
+    <rect y="30" width="360" height="24" fill="#22c55e"/>
+    <text x="24" y="34" fill="#ffffff" font-size="20" font-weight="700">Module A</text>
+    <text x="24" y="84" fill="#166534" font-size="22" font-weight="700">Learn from Real Papers</text>
+
+    <rect x="24" y="104" width="140" height="30" rx="15" fill="#f0fdf4"/>
+    <text x="42" y="124" fill="#16a34a" font-size="13" font-weight="600">Question-first</text>
+
+    <text x="24" y="166" fill="#334155" font-size="16">" 8-12 anchor questions per pack</text>
+    <text x="24" y="194" fill="#334155" font-size="16">" Know-how lesson cards</text>
+    <text x="24" y="222" fill="#334155" font-size="16">" Variant drills and mini tests</text>
+    <text x="24" y="250" fill="#334155" font-size="16">" Pre-exam checklist</text>
+
+    <rect x="24" y="278" width="312" height="48" rx="14" fill="#f8fafc" stroke="#dcfce7"/>
+    <text x="40" y="307" fill="#64748b" font-size="14">Goal: help users learn faster, not watch longer</text>
+  </g>
+
+  <g transform="translate(980,150)" filter="url(#shadow)">
+    <rect width="360" height="250" rx="24" fill="url(#cardBg)" stroke="#3b82f6" stroke-width="2"/>
+    <rect width="360" height="54" rx="24" fill="#3b82f6"/>
+    <rect y="30" width="360" height="24" fill="#3b82f6"/>
+    <text x="24" y="34" fill="#ffffff" font-size="20" font-weight="700">Module B</text>
+    <text x="24" y="84" fill="#1d4ed8" font-size="22" font-weight="700">AI Paper Builder</text>
+
+    <rect x="24" y="104" width="168" height="30" rx="15" fill="#eff6ff"/>
+    <text x="42" y="124" fill="#2563eb" font-size="13" font-weight="600">Prototype-based AI</text>
+
+    <text x="24" y="166" fill="#334155" font-size="16">" Standard mock papers</text>
+    <text x="24" y="194" fill="#334155" font-size="16">" Weakness-targeted papers</text>
+    <text x="24" y="222" fill="#334155" font-size="16">" Retry papers from mistakes</text>
+    <text x="24" y="250" fill="#334155" font-size="16">" Online exam or download</text>
+
+    <rect x="24" y="278" width="312" height="48" rx="14" fill="#f8fafc" stroke="#dbeafe"/>
+    <text x="40" y="307" fill="#64748b" font-size="14">Goal: help users practice more without wasting real papers</text>
+  </g>
+
+  <line x1="420" y1="275" x2="520" y2="335" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="980" y1="275" x2="880" y2="335" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(430,320)" filter="url(#shadow)">
+    <rect width="540" height="240" rx="26" fill="url(#cardBg)" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="540" height="56" rx="26" fill="#8b5cf6"/>
+    <rect y="30" width="540" height="26" fill="#8b5cf6"/>
+    <text x="24" y="36" fill="#ffffff" font-size="20" font-weight="700">Shared Core</text>
+    <text x="24" y="93" fill="#5b21b6" font-size="22" font-weight="700">Reusable assets for both modules</text>
+
+    <rect x="24" y="118" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="49" y="143" fill="#7c3aed" font-size="15" font-weight="600">Question graph</text>
+
+    <rect x="194" y="118" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="237" y="143" fill="#7c3aed" font-size="15" font-weight="600">Topic tags</text>
+
+    <rect x="364" y="118" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="391" y="143" fill="#7c3aed" font-size="15" font-weight="600">Real prototypes</text>
+
+    <rect x="24" y="176" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="42" y="201" fill="#7c3aed" font-size="15" font-weight="600">Mistake taxonomy</text>
+
+    <rect x="194" y="176" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="226" y="201" fill="#7c3aed" font-size="15" font-weight="600">Mastery model</text>
+
+    <rect x="364" y="176" width="152" height="40" rx="14" fill="#f5f3ff"/>
+    <text x="388" y="201" fill="#7c3aed" font-size="15" font-weight="600">AI variation rules</text>
+  </g>
+
+  <text x="60" y="610" fill="#334155" font-size="18" font-weight="700">Persistent system layer</text>
+
+  <line x1="700" y1="560" x2="250" y2="630" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="700" y1="560" x2="700" y2="630" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="700" y1="560" x2="1150" y2="630" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(60,640)" filter="url(#shadow)">
+    <rect width="380" height="150" rx="22" fill="url(#cardBg)" stroke="#e2e8f0"/>
+    <rect width="380" height="14" rx="22" fill="#22c55e" opacity="0.18"/>
+    <text x="24" y="42" fill="#1e293b" font-size="20" font-weight="700">Progress &amp; Checklist</text>
+    <text x="24" y="76" fill="#334155" font-size="15">Track finished packs, mini tests,</text>
+    <text x="24" y="100" fill="#334155" font-size="15">checklist items and pre-exam readiness.</text>
+  </g>
+
+  <g transform="translate(510,640)" filter="url(#shadow)">
+    <rect width="380" height="150" rx="22" fill="url(#cardBg)" stroke="#e2e8f0"/>
+    <rect width="380" height="14" rx="22" fill="#3b82f6" opacity="0.18"/>
+    <text x="24" y="42" fill="#1e293b" font-size="20" font-weight="700">Weakness Map &amp; Replay</text>
+    <text x="24" y="76" fill="#334155" font-size="15">Connect wrong answers back to anchor</text>
+    <text x="24" y="100" fill="#334155" font-size="15">questions, packs and targeted retry papers.</text>
+  </g>
+
+  <g transform="translate(960,640)" filter="url(#shadow)">
+    <rect width="380" height="150" rx="22" fill="url(#cardBg)" stroke="#e2e8f0"/>
+    <rect width="380" height="14" rx="22" fill="#8b5cf6" opacity="0.18"/>
+    <text x="24" y="42" fill="#1e293b" font-size="20" font-weight="700">CMS &amp; QA Review</text>
+    <text x="24" y="76" fill="#334155" font-size="15">Review generated items, fix weak prompts,</text>
+    <text x="24" y="100" fill="#334155" font-size="15">track quality feedback and retire bad items.</text>
+  </g>
+</svg>
