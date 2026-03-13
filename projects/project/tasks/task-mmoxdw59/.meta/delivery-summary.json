@@ -1,0 +1,50 @@
+{
+  "taskSlug": "task-mmoxdw59",
+  "taskTitle": "学习报告AI策划",
+  "deliveryMode": "full",
+  "completedAt": "2025-03-13",
+  "deliverables": [
+    {
+      "path": "projects/project/tasks/task-mmoxdw59/deliverables/learning-report-summary-ai-prd.md",
+      "type": "ai-prd",
+      "description": "学习报告总结：输入走神专注度图片+科目+时间，输出总结文本；四章结构完整"
+    },
+    {
+      "path": "projects/project/tasks/task-mmoxdw59/deliverables/learning-report-summary-script/",
+      "type": "ai-script",
+      "description": "生成器、客户端、Prompt、demo、route 示例、单元测试、样例与 README"
+    },
+    {
+      "path": "projects/project/tasks/task-mmoxdw59/deliverables/learning-report-summary-ai-test-report.md",
+      "type": "ai-test-report",
+      "description": "测试范围、环境、执行记录、结论与风险"
+    },
+    {
+      "path": "projects/project/tasks/task-mmoxdw59/deliverables/learning-report-summary-bundle-readme.md",
+      "type": "bundle-readme",
+      "description": "交付概览、目录、入口、配置、调用方式、验证命令"
+    },
+    {
+      "path": "projects/project/tasks/task-mmoxdw59/deliverables/learning-report-summary-bundle-manifest.md",
+      "type": "bundle-manifest",
+      "description": "脚本包文件清单与打包说明"
+    }
+  ],
+  "userInputFrozen": {
+    "inputFields": ["走神专注度图片", "科目", "时间"],
+    "outputExpectation": "总结文本"
+  },
+  "keyDecisions": [
+    "输入统一为 focus_image（URL/base64）、subject、time_range；缺图直接报错，缺科目/时间用占位",
+    "输出为单字段 summary（一段总结文本），与 PRD 及前端展示一致",
+    "单阶段生成：一次调用多模态/视觉模型，Prompt 约束不编造、不越界",
+    "脚本层提供 run(payload)、client.chat、Flask route 示例与 pytest 单测"
+  ],
+  "selfReview": {
+    "objectivesMet": true,
+    "skillsMatch": "ai-planning-orchestrator 全流程：任务卡冻结、PRD、脚本、测试报告、bundle 说明",
+    "artifactsComplete": true,
+    "pathsCorrect": true,
+    "readyForReview": true
+  }
+}
