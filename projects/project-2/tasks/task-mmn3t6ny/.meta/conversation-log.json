@@ -1,0 +1,32 @@
+{
+  "task": "project-2/task-mmn3t6ny",
+  "submitted_at": "2026-03-13T00:00:00Z",
+  "total_messages": 8,
+  "key_topics": [
+    "TeamPilot 启动与任务初始化",
+    "高数真题学习网站产品定义",
+    "真题去学与 AI 真题组卷双模块设计",
+    "公开证据补强与用户关注点提炼",
+    "MVP 范围、后台机制与提交自查"
+  ],
+  "tools_used": [
+    "Shell",
+    "ReadFile",
+    "Glob",
+    "WebSearch",
+    "WebFetch",
+    "ApplyPatch",
+    "ReadLints"
+  ],
+  "files_created": [
+    "projects/project-2/tasks/task-mmn3t6ny/.meta/conversation-log.json"
+  ],
+  "files_modified": [
+    "projects/project-2/tasks/task-mmn3t6ny/deliverables/INDEX.md",
+    "projects/project-2/tasks/task-mmn3t6ny/deliverables/evidence-pack.md",
+    "projects/project-2/tasks/task-mmn3t6ny/deliverables/product-plan.md",
+    "projects/project-2/tasks/task-mmn3t6ny/.meta/key-decisions.md",
+    "projects/project-2/tasks/task-mmn3t6ny/.meta/self-review.md",
+    "projects/project-2/tasks/task-mmn3t6ny/.meta/dialogue-log.md"
+  ]
+}
