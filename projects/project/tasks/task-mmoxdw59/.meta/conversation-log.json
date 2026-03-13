@@ -1,0 +1,37 @@
+{
+  "task": "project/task-mmoxdw59",
+  "submitted_at": "2025-03-13",
+  "total_messages": 0,
+  "key_topics": [
+    "学习报告AI策划",
+    "输入：走神专注度图片、科目、时间",
+    "输出：总结文本",
+    "AI PRD 四章结构",
+    "Mock 模式与测试跑通",
+    "测试数据与测试输出结果"
+  ],
+  "tools_used": ["read_file", "write", "search_replace", "run_terminal_cmd", "todo_write"],
+  "files_created": [
+    "deliverables/learning-report-summary-ai-prd.md",
+    "deliverables/learning-report-summary-script/",
+    "deliverables/learning-report-summary-ai-test-report.md",
+    "deliverables/learning-report-summary-bundle-readme.md",
+    "deliverables/learning-report-summary-bundle-manifest.md",
+    "deliverables/learning-report-summary-script/run_tests.py",
+    "deliverables/learning-report-summary-script/examples/input_base64.json",
+    "deliverables/learning-report-summary-script/examples/input_multi_subject.json",
+    "deliverables/learning-report-summary-script/examples/output_test_run_*.json",
+    "deliverables/learning-report-summary-script/examples/TEST_RUN_RESULT.md",
+    ".meta/task-freeze.json",
+    ".meta/delivery-summary.json",
+    ".meta/key-decisions.md",
+    ".meta/conversation-log.json",
+    ".meta/pr-comment.md"
+  ],
+  "files_modified": [
+    "deliverables/learning-report-summary-script/client.py",
+    "deliverables/learning-report-summary-script/summary_generator.py",
+    "deliverables/learning-report-summary-script/demo.py",
+    "deliverables/learning-report-summary-ai-test-report.md"
+  ]
+}
