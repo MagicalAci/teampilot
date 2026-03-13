@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "frozenAt": "2025-03-13",
+  "deliveryMode": "full",
+  "deliveryScope": ["ai-prd", "ai-script", "ai-test-report", "optional-bundle"],
+  "stakeholders": ["产品", "开发"],
+  "userInput": {
+    "inputFields": ["走神专注度图片", "科目", "时间"],
+    "outputExpectation": "总结文本"
+  },
+  "constraints": {
+    "template": "ai-prd-template.md 四章结构",
+    "outputPath": "projects/project/tasks/task-mmoxdw59/deliverables/",
+    "metaPath": "projects/project/tasks/task-mmoxdw59/.meta/"
+  },
+  "upstreamAssets": []
+}
